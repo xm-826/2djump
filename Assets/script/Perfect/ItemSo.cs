@@ -15,7 +15,7 @@ public class ItemSo : ScriptableObject
     public string itemDescription; //物品描述
     public float value;//物品的作用
     public float valueTime;
-    
+    public int dropWeight;
     public int maxNumber;
 
 

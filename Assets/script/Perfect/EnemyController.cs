@@ -2,6 +2,7 @@ using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -48,7 +49,8 @@ public class EnemyController : MonoBehaviour
     
     [SerializeField] private Animator ani;
 
-
+    [Header("道具配置")]
+    [SerializeField] private GameObject[] itemPrefab;
 
 
     private BoxCollider2D bc;
@@ -82,6 +84,9 @@ public class EnemyController : MonoBehaviour
             SwitchState(EnemyState.Die);
             return;
         }
+
+        if(currentState == EnemyState.Die)
+            return;
 
         if (currentState == EnemyState.Turn||currentState == EnemyState.Idle)
         {
@@ -149,6 +154,7 @@ public class EnemyController : MonoBehaviour
         switch (state)
         {
             case EnemyState.Die:
+                
                 break;
             case EnemyState.Move:
                 rb.velocity = new Vector2(0, rb.velocity.y);
@@ -168,6 +174,9 @@ public class EnemyController : MonoBehaviour
         switch (state)
         {
             case EnemyState.Die:
+                Vector2 p1 = transform.position;
+                GameObject picked = PickByWeight(itemPrefab);
+                Instantiate(picked,p1,transform.rotation);
                 break;
             case EnemyState.Move:
                 break;
@@ -230,8 +239,8 @@ public class EnemyController : MonoBehaviour
 
     private void HandleDie()
     {
-        GetComponent<Collider2D>().enabled = false;  // �ر���ײ����ֹ�����˺����
-
+        GetComponent<Collider2D>().enabled = false;  
+        
         Destroy(gameObject, dieTime);
     }
 
@@ -324,6 +333,36 @@ public class EnemyController : MonoBehaviour
     }
 
     
-    
+    //随机获取预制件
+    private GameObject PickByWeight(GameObject[] prefabs)
+    {
+        float total = 0;
+        foreach(var p in prefabs)
+        {
+            //获取预制件中的item
+            var item = p.GetComponent<Item>();
+            if(item!=null&&item.itemSos !=null)
+                total += item.itemSos.dropWeight;
+        }
 
+        //Roll点
+        float roll = UnityEngine.Random.Range(0,total);
+
+        //查看处于什么区间
+        float accumulate = 0;
+        foreach (var p in prefabs)
+        {
+            var item = p.GetComponent<Item>();
+            if(item!=null&&item.itemSos !=null)
+            {
+                accumulate += item.itemSos.dropWeight;
+                if(roll <= accumulate)
+                {
+                    return p;
+                }
+            }
+        }
+    
+        return prefabs[0];
+    }
 }

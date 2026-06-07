@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 public class Item : MonoBehaviour
 {
-    [SerializeField] ItemSo itemSos;
+    [SerializeField] public ItemSo itemSos;
     public int num;
     [SerializeField] private InventoryManager inventoryManager;
 
