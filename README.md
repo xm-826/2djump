@@ -8,8 +8,7 @@
 
 ### 运行步骤
 1. 克隆仓库到本地：
-   ```bash
-  git clone https://github.com/xm-826/2djump.git
+   ```bash git clone https://github.com/xm-826/2djump.git
 2.用 Unity Hub 打开项目根目录
 3.打开场景文件（比如 Assets/Scenes/MainScene.unity）
 4.点击 Unity 编辑器的「Play」按钮开始运行
