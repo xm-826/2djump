@@ -283,7 +283,7 @@ public class EnemyController : MonoBehaviour
 
         //RaycastHit2D hitMove = Physics2D.Raycast(orginPlace, new Vector2(dir, 0), hitLineMove, rayerCastLayer);
         //canMove = hitMove.collider != null;
-        Debug.DrawRay(orginPlace, new Vector2(dir, 0) * hitLineMove, canSee ? Color.green : Color.red);
+       // Debug.DrawRay(orginPlace, new Vector2(dir, 0) * hitLineMove, canSee ? Color.green : Color.red);
 
 
     }
