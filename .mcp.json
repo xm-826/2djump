@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "gladekit-unity": {
+      "command": "uvx",
+      "args": ["gladekit-mcp"]
+    }
+  }
+}
