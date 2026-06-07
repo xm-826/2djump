@@ -41,19 +41,28 @@ Tab 键打开 / 关闭背包，暂停游戏时间
 UI 系统（开始界面 / 死亡界面 / 设置界面 / 结算界面）
 背景切换（根据玩家 Y 坐标切换蓝 / 绿背景）
 
-### 代码结构
-代码结构（核心脚本）
+#### 代码结构
 PlayerController	玩家状态机、移动 / 跳跃 / 受伤 / 复活
+
 EnemyController	敌人 AI、状态机、碰撞判定
+
 SaveController	存档 / 读档逻辑、JSON 序列化
+
 InventoryManager	背包管理、物品拾取 / 使用
+
 SaveTrigger	存档点触发器（按 E 存档）
+
 ItemSo	物品配置（ScriptableObject）
+
 UIController	所有 UI 界面的交互逻辑
+
 GameManager	全局金币计数、单例管理
 
 #### 学习笔记
 状态机模式：用枚举管理玩家 / 敌人状态，拆分 UpdateState（状态判断）和 ExecuteStateBehavior（状态行为），逻辑更清晰
+
 射线检测：多射线判定地面，解决单射线漏判问题
+
 存档序列化：Dictionary 无法直接序列化，需转为 List 存储
+
 单例模式：GameManager/UIController 用单例管理全局状态，避免重复挂载
