@@ -3,13 +3,13 @@
 
 ## 快速开始
 ### 环境要求
-- Unity 版本：2021.3.x（或你实际使用的版本，必须写！）
-- 运行平台：Windows/macOS（根据实际情况）
+- Unity 版本：2022.3
+- 运行平台：Windows
 
 ### 运行步骤
 1. 克隆仓库到本地：
    ```bash
-   git clone https://github.com/你的用户名/仓库名.git
+  git clone https://github.com/xm-826/2djump.git
 2.用 Unity Hub 打开项目根目录
 3.打开场景文件（比如 Assets/Scenes/MainScene.unity）
 4.点击 Unity 编辑器的「Play」按钮开始运行
