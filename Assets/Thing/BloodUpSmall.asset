@@ -21,5 +21,7 @@ MonoBehaviour:
     "Not enough to bring a warrior back from the brink, but it can seal a few cuts
     and ease the sting of a fresh wound."'
   value: 0.2
+  valueTime: 0
+  dropWeight: 5
   maxNumber: 9
   statToChange: 1

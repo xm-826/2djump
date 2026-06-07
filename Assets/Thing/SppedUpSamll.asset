@@ -23,5 +23,6 @@ MonoBehaviour:
     of dew.\""
   value: 2
   valueTime: 3
+  dropWeight: 2
   maxNumber: 9
   statToChange: 2
