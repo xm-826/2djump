@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
         currentState = PlayerState.Idle;
         lastState = currentState;
-        
+        AudioManager.Instance.PlayBGM();
     }
 
 
@@ -237,11 +237,13 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerState.Jump:
+                AudioManager.Instance.PlayJumpSound();
                 aniLand = false;
                 if (isGround) jumpCount++;
                 break;
 
             case PlayerState.Hurt:
+                AudioManager.Instance.PlayHitSound();
                 ani.ResetTrigger("Hurt");
                 sr.color = new Color(1, 0.5f, 0.5f);
                 break;

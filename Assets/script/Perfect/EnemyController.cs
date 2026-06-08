@@ -31,8 +31,7 @@ public class EnemyController : MonoBehaviour
     private bool canSee = false;
     [SerializeField] private LayerMask rayerCastLayer;
     [SerializeField] private float hitLineSee = 5f;
-    [SerializeField] private float hitLineMove = 15f;
-
+    
     [Header("敌人属性设置")]
     [SerializeField] private float dieTime = 0.2f;
     [SerializeField] private float danmage = 0.2f;

@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     
     public void CoinAdd(int amount=1)
     {
+        AudioManager.Instance.PlayGetCoinSound();
         coinCount += amount;
         UIController.instance.UpdateCoin(coinCount);
     }
