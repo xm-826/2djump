@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {   
@@ -17,7 +18,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip clickSound;
     [SerializeField] private AudioClip getCoinSound;
 
- 
+    
+    [SerializeField] private Slider VolumeVolue;
     public static AudioManager Instance;
     private void Awake()
     {
@@ -54,7 +56,7 @@ public class AudioManager : MonoBehaviour
     //停止音乐
     public void StopBGM() => bgmSource.Stop();
     //设置音乐
-    public void SetBGMVolume(float vol) => bgmSource.volume = Mathf.Clamp01(vol);
+    public void SetBGMVolume() => bgmSource.volume = Mathf.Clamp01(VolumeVolue.value);
 
     //播放点击音效
     public void PlayClickSound() => effectSource.PlayOneShot(clickSound);

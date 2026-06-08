@@ -92,6 +92,7 @@ public class UIController : MonoBehaviour
     /// </summary>
     public void LoadNewGame()
     {
+        AudioManager.Instance.PlayClickSound();
         SaveController.AutoLoadOnStart = false;
         //动画切换
         startUi.SetActive(false);
@@ -102,6 +103,7 @@ public class UIController : MonoBehaviour
     // 继续游戏：直接读档传送到存档点
     public void LoadContinue()
     {
+        AudioManager.Instance.PlayClickSound();
         if (saveController != null)
         {
             saveController.Load();
@@ -113,6 +115,7 @@ public class UIController : MonoBehaviour
     //退出游戏
     public void ExitGame()
     {
+        AudioManager.Instance.PlayClickSound();
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #else
@@ -127,6 +130,7 @@ public class UIController : MonoBehaviour
     //set-> 游戏界面 返回游戏
     public void ReturnGame()
     {
+        AudioManager.Instance.PlayClickSound();
         setUi.SetActive(false);
         animSet.SetBool("AppearSet", false);
     }
@@ -143,6 +147,7 @@ public class UIController : MonoBehaviour
     //胜利返回开始处
     public void EndReturn()
     {
+        AudioManager.Instance.PlayClickSound();
         skipStartUI =true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
@@ -168,10 +173,10 @@ public class UIController : MonoBehaviour
 
     public void DieNo()
     {
+        AudioManager.Instance.PlayClickSound();
        
         StartCoroutine(CloseUi());
-        
-        print("玩家点击 Try Again，触发复活");
+        print("玩家点击 Try Again,触发复活");
 
     }
 
@@ -194,9 +199,23 @@ public class UIController : MonoBehaviour
    
     public void RestartGame()
     {
+        AudioManager.Instance.PlayClickSound();
         StopAllCoroutines();
         skipStartUI = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void VolumeSetIn()
+    {
+        AudioManager.Instance.PlayClickSound();
+        animSet.SetBool("flag1",true);
+    }
+    
+
+    public void VolumeSetOut()
+    {
+        AudioManager.Instance.PlayClickSound();
+        animSet.SetBool("flag1",false);
     }
 
 }
